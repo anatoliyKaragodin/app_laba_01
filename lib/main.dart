@@ -1,10 +1,19 @@
+import 'package:app_laba_01/my_app.dart';
+import 'package:app_laba_01/screens/login_email_page.dart';
+import 'package:app_laba_01/screens/login_google_page.dart';
 import 'package:flutter/material.dart';
 
-import 'my_app.dart';
+
 
 void main() {
-  runApp(const MaterialApp(
-    home: MyApp(),
+  runApp(MaterialApp(
+    theme: ThemeData(),
+    initialRoute: '/my app',
+    routes: {
+  '/my app': (context) => MyApp(),
+      '/login Email': (context) => LoginEmailPage(),
+      '/login Google': (context) => LoginGooglePage(),
+  }
   ));
 }
 
