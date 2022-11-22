@@ -31,6 +31,8 @@ dependencies:
     sdk: flutter
   fluent_ui:
   provider:
+  shared_preferences:
+  shared_preferences_windows:
 
 
   # The following adds the Cupertino Icons font to your application.
