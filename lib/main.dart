@@ -9,6 +9,11 @@ void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(brightness: Brightness.dark),
+
+      /// Routes of application
+      ///
       initialRoute: '/home page',
       routes: {
         '/home page': (context) => const HomePage(),

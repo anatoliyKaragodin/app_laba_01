@@ -9,6 +9,8 @@ class SettingsPage extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           actions: [
+            /// Close icon(return to app_page)
+            ///
             IconButton(
               icon: const Icon(Icons.close),
               onPressed: () {
@@ -20,6 +22,8 @@ class SettingsPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            /// Application theme option
+            ///
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -34,6 +38,8 @@ class SettingsPage extends StatelessWidget {
                 ),
               ],
             ),
+            /// Application language option
+            ///
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

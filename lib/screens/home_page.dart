@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Start page with authentication and language option
+///
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
