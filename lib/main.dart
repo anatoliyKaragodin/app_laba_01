@@ -3,10 +3,20 @@ import 'package:app_laba_01/screens/home_page.dart';
 import 'package:app_laba_01/screens/login_email_page.dart';
 import 'package:app_laba_01/screens/login_google_page.dart';
 import 'package:app_laba_01/screens/settings_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'screens/landing.dart';
 
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MaterialApp(
+      home: LandingPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       themeMode: ThemeMode.dark,

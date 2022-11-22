@@ -1,16 +1,53 @@
+import 'package:app_laba_01/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-late String emailUserLogin;
-late String emailUserPassword;
-
-class LoginEmailPage extends StatelessWidget {
+class LoginEmailPage extends StatefulWidget {
   const LoginEmailPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginEmailPage> createState() => _LoginEmailPageState();
+}
+
+class _LoginEmailPageState extends State<LoginEmailPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  AuthService _authService = AuthService();
+  late String _emailUserLogin;
+  late String _emailUserPassword;
+
+  void _loginButtonAction() async {
+    _emailUserLogin = _emailController.text;
+    _emailUserPassword = _passwordController.text;
+
+    if (_emailUserLogin.isEmpty || _emailUserPassword.isEmpty) return;
+
+    String user = await _authService.signInWithEmailAndPassword(
+        _emailUserLogin.trim(), _emailUserPassword.trim());
+    if (user == null) {
+      Fluttertoast.showToast(
+          msg: "Fail",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    } else {
+      _emailController.clear();
+      _passwordController.clear();
+      Navigator.pushNamed(context, '/app page');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         const Text('Авторизация Email'),
+
         /// Login row
         ///
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -23,13 +60,14 @@ class LoginEmailPage extends StatelessWidget {
               width: 300,
               child: TextField(
                 onChanged: (String value) {
-                  emailUserLogin = value;
+                  _emailController.text = value;
                 },
                 decoration: InputDecoration(
                     hintText: 'Введите логин',
                     labelStyle: TextStyle(fontSize: 20)),
               )),
         ]),
+
         /// Password row
         ///
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -42,7 +80,7 @@ class LoginEmailPage extends StatelessWidget {
               width: 300,
               child: TextField(
                 onChanged: (String value) {
-                  emailUserLogin = value;
+                  _passwordController.text = value;
                 },
                 decoration: InputDecoration(
                     hintText: 'Введите пароль',
@@ -55,10 +93,26 @@ class LoginEmailPage extends StatelessWidget {
             /// Login button
             ///
             TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/app page');
+                onPressed: () async {
+                  //_loginButtonAction();
+                  try {
+                    final credential = await FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                      email: "asadw@gmail.com",
+                      password: "12314!23q",
+                    );
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'weak-password') {
+                      print('The password provided is too weak.');
+                    } else if (e.code == 'email-already-in-use') {
+                      print('The account already exists for that email.');
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
                 },
                 child: const Text('Войти')),
+
             /// Close button(return to home_page)
             ///
             IconButton(
