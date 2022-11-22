@@ -14,7 +14,6 @@ void main() {
 
       /// Routes of application
       ///
-      ///
       initialRoute: '/home page',
       routes: {
         '/home page': (context) => const HomePage(),
