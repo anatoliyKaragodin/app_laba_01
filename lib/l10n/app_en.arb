@@ -1,0 +1,11 @@
+{
+    "helloWorld": "Hello World!",
+    "authentication": "Authentication",
+    "authenticationEmail": "Authentication Email",
+    "authenticationGoogle": "Authentication Google",
+    "hintEnterLogin": "Enter login",
+    "hintEnterPassword": "Enter password",
+    "logIn": "Log in",
+    "appText": "Main app page",
+    "appTheme": "Application theme"
+}

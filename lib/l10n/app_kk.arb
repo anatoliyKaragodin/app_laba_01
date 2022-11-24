@@ -1,0 +1,11 @@
+{
+  "helloWorld": "Сәлеметсіз бе!",
+  "authentication": "Авторизация",
+  "authenticationEmail": "Авторизация Email",
+  "authenticationGoogle": "Авторизация Google",
+  "hintEnterLogin": "Логинді енгізіңіз",
+  "hintEnterPassword": "құпия сөзді еңгізіңіз",
+  "logIn": "Кіру үшін",
+  "appText": "Қолданбаның негізгі беті",
+  "appTheme": "Қолданба тақырыбы"
+}

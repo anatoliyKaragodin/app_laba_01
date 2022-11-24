@@ -1,4 +1,9 @@
+import 'package:app_laba_01/l10n/all_locales.dart';
+import 'package:app_laba_01/locale_provider.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 /// Start page with authentication and language option
 ///
@@ -13,11 +18,11 @@ class HomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(bottom: 10.0),
             child: Text(
-              'Авторизация',
-              style: TextStyle(fontSize: 20),
+              AppLocalizations.of(context).authentication,
+              // style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
 
@@ -33,7 +38,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/login Email');
                   },
-                  child: const Text('Email'))
+                  child: Text('Email'))
             ],
           ),
           const SizedBox(height: 100),
@@ -43,9 +48,18 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(onPressed: () {}, child: const Text('Русский')),
-              TextButton(onPressed: () {}, child: const Text('English')),
-              TextButton(onPressed: () {}, child: const Text('中国人')),
+              TextButton(onPressed: () {
+                Provider.of<LocaleProvider>(context,listen: false)
+                    .setLocale(AllLocale.all[0]);
+              }, child: const Text('Русский')),
+              TextButton(onPressed: () {
+                Provider.of<LocaleProvider>(context,listen: false)
+                    .setLocale(AllLocale.all[1]);
+              }, child: const Text('English')),
+              TextButton(onPressed: () {
+                Provider.of<LocaleProvider>(context,listen: false)
+                    .setLocale(AllLocale.all[2]);
+              }, child: const Text('қазақ')),
             ],
           ),
         ],

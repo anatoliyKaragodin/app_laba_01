@@ -1,53 +1,17 @@
-import 'package:app_laba_01/services/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LoginEmailPage extends StatefulWidget {
+late String emailUserLogin;
+late String emailUserPassword;
+
+class LoginEmailPage extends StatelessWidget {
   const LoginEmailPage({Key? key}) : super(key: key);
-
-  @override
-  State<LoginEmailPage> createState() => _LoginEmailPageState();
-}
-
-class _LoginEmailPageState extends State<LoginEmailPage> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-
-  AuthService _authService = AuthService();
-  late String _emailUserLogin;
-  late String _emailUserPassword;
-
-  void _loginButtonAction() async {
-    _emailUserLogin = _emailController.text;
-    _emailUserPassword = _passwordController.text;
-
-    if (_emailUserLogin.isEmpty || _emailUserPassword.isEmpty) return;
-
-    String user = await _authService.signInWithEmailAndPassword(
-        _emailUserLogin.trim(), _emailUserPassword.trim());
-    if (user == null) {
-      Fluttertoast.showToast(
-          msg: "Fail",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    } else {
-      _emailController.clear();
-      _passwordController.clear();
-      Navigator.pushNamed(context, '/app page');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const Text('Авторизация Email'),
-
+        Text(AppLocalizations.of(context).authenticationEmail,),
         /// Login row
         ///
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -60,14 +24,14 @@ class _LoginEmailPageState extends State<LoginEmailPage> {
               width: 300,
               child: TextField(
                 onChanged: (String value) {
-                  _emailController.text = value;
+                  emailUserLogin = value;
                 },
                 decoration: InputDecoration(
-                    hintText: 'Введите логин',
-                    labelStyle: TextStyle(fontSize: 20)),
+                    hintText: AppLocalizations.of(context).hintEnterLogin,
+                    // labelStyle: TextStyle(fontSize: 20)
+                ),
               )),
         ]),
-
         /// Password row
         ///
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -80,11 +44,13 @@ class _LoginEmailPageState extends State<LoginEmailPage> {
               width: 300,
               child: TextField(
                 onChanged: (String value) {
-                  _passwordController.text = value;
+                  emailUserLogin = value;
                 },
+                obscureText: true,
                 decoration: InputDecoration(
-                    hintText: 'Введите пароль',
-                    labelStyle: TextStyle(fontSize: 20)),
+                    hintText: AppLocalizations.of(context).hintEnterPassword,
+                    // labelStyle: TextStyle(fontSize: 20)
+                ),
               )),
         ]),
         Row(
@@ -93,26 +59,10 @@ class _LoginEmailPageState extends State<LoginEmailPage> {
             /// Login button
             ///
             TextButton(
-                onPressed: () async {
-                  //_loginButtonAction();
-                  try {
-                    final credential = await FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                      email: "asadw@gmail.com",
-                      password: "12314!23q",
-                    );
-                  } on FirebaseAuthException catch (e) {
-                    if (e.code == 'weak-password') {
-                      print('The password provided is too weak.');
-                    } else if (e.code == 'email-already-in-use') {
-                      print('The account already exists for that email.');
-                    }
-                  } catch (e) {
-                    print(e);
-                  }
+                onPressed: () {
+                  Navigator.pushNamed(context, '/app page');
                 },
-                child: const Text('Войти')),
-
+                child: Text(AppLocalizations.of(context).logIn)),
             /// Close button(return to home_page)
             ///
             IconButton(

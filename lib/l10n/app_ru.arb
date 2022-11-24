@@ -1,0 +1,11 @@
+{
+  "helloWorld": "Привет!",
+  "authentication": "Авторизация",
+  "authenticationEmail": "Авторизация Email",
+  "authenticationGoogle": "Авторизация Google",
+  "hintEnterLogin": "Введите логин",
+  "hintEnterPassword": "Введите пароль",
+  "logIn": "Войти",
+  "appText": "Основная странница приложения",
+  "appTheme": "Тема приложения"
+}
