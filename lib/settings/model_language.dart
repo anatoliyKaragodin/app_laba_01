@@ -2,25 +2,25 @@ import 'package:app_laba_01/settings/my_preference.dart';
 import 'package:flutter/material.dart';
 
 
-class ModelTheme extends ChangeNotifier {
-  late bool _isDark;
+class ModelLanguage extends ChangeNotifier {
+  late String _locale;
   late MyPreferences _preferences;
-  bool get isDark => _isDark;
+  String get locale => _locale;
 
-  ModelTheme() {
-    _isDark = false;
+  ModelLanguage() {
+    _locale = "ru";
     _preferences = MyPreferences();
     getPreferences();
   }
 //Switching the themes
-  set isDark(bool value) {
-    _isDark = value;
-    _preferences.setTheme(value);
+  set locale(String value) {
+    _locale = value;
+    _preferences.setLanguage(value);
     notifyListeners();
   }
 
   getPreferences() async {
-    _isDark = await _preferences.getTheme();
+    _locale = await _preferences.getLanguage();
     notifyListeners();
   }
 }

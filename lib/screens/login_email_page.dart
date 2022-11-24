@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 late String emailUserLogin;
 late String emailUserPassword;
@@ -10,7 +11,7 @@ class LoginEmailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const Text('Авторизация Email'),
+        Text(AppLocalizations.of(context).authenticationEmail,),
         /// Login row
         ///
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -26,8 +27,9 @@ class LoginEmailPage extends StatelessWidget {
                   emailUserLogin = value;
                 },
                 decoration: InputDecoration(
-                    hintText: 'Введите логин',
-                    labelStyle: TextStyle(fontSize: 20)),
+                    hintText: AppLocalizations.of(context).hintEnterLogin,
+                    // labelStyle: TextStyle(fontSize: 20)
+                ),
               )),
         ]),
         /// Password row
@@ -44,9 +46,11 @@ class LoginEmailPage extends StatelessWidget {
                 onChanged: (String value) {
                   emailUserLogin = value;
                 },
+                obscureText: true,
                 decoration: InputDecoration(
-                    hintText: 'Введите пароль',
-                    labelStyle: TextStyle(fontSize: 20)),
+                    hintText: AppLocalizations.of(context).hintEnterPassword,
+                    // labelStyle: TextStyle(fontSize: 20)
+                ),
               )),
         ]),
         Row(
@@ -58,7 +62,7 @@ class LoginEmailPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/app page');
                 },
-                child: const Text('Войти')),
+                child: Text(AppLocalizations.of(context).logIn)),
             /// Close button(return to home_page)
             ///
             IconButton(

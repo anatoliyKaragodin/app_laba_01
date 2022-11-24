@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Main application page with nothing
 ///
@@ -29,8 +30,8 @@ class AppPage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('App page'),
+      body: Center(
+        child: Text(AppLocalizations.of(context).appText),
       ),
     );
   }

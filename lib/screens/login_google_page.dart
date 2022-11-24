@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 late String googleUserLogin;
 late String googleUserPassword;
 
 
-class LoginGooglePage extends StatefulWidget {
+class LoginGooglePage extends StatelessWidget {
   const LoginGooglePage({Key? key}) : super(key: key);
 
-  @override
-  State<LoginGooglePage> createState() => _LoginGooglePageState();
-}
-
-class _LoginGooglePageState extends State<LoginGooglePage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const Text('Авторизация Google'),
+        Text(AppLocalizations.of(context).authenticationGoogle),
 
         /// Login row
         ///
@@ -34,7 +30,7 @@ class _LoginGooglePageState extends State<LoginGooglePage> {
                   googleUserLogin = value;
                 },
                 decoration: InputDecoration(
-                    hintText: 'Введите логин',
+                    hintText: AppLocalizations.of(context).hintEnterLogin,
                     labelStyle: TextStyle(fontSize: 20)),
               )),
         ]),
@@ -53,22 +49,23 @@ class _LoginGooglePageState extends State<LoginGooglePage> {
                 onChanged: (String value) {
                   googleUserPassword = value;
                 },
+                obscureText: true,
                 decoration: InputDecoration(
-                    hintText: 'Введите пароль',
+                    hintText: AppLocalizations.of(context).hintEnterPassword,
                     labelStyle: TextStyle(fontSize: 20)),
               )),
         ]),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             /// Login button
             ///
             TextButton(
                 onPressed: () {
-
                   Navigator.pushNamed(context, '/app page');
                 },
-                child: const Text('Войти')),
+                child: Text(AppLocalizations.of(context).logIn)),
 
             /// Close button(return to home_page)
             ///
@@ -83,3 +80,4 @@ class _LoginGooglePageState extends State<LoginGooglePage> {
     );
   }
 }
+
