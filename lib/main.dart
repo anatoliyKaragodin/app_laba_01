@@ -10,16 +10,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:app_laba_01/settings/model_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:app_laba_01/locale_provider.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
+
 
 void main() async {
-WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
 
-    FirebaseUIAuth.configureProviders([
-        GoogleProvider(clientId: '871867126085-0bjbb0kuohbg12vpmqf2sdtgp4o0776c.apps.googleusercontent.com'),
-    ]);
   runApp(const MyApp());
 }
 
