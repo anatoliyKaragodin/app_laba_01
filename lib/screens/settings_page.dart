@@ -2,6 +2,7 @@ import 'package:app_laba_01/l10n/all_locales.dart';
 import 'package:app_laba_01/locale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:app_laba_01/settings/model_theme.dart';
+import 'package:flutterfire_ui/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

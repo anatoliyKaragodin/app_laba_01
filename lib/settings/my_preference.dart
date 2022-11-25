@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MyPreferences {
   static const THEME_KEY = "theme_key";
   static const LANGUAGE_KEY = "language_key";
+  static var TOKEN_KEY;
 
   setTheme(bool value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -24,5 +25,3 @@ class MyPreferences {
     return sharedPreferences.getString(LANGUAGE_KEY) ?? "ru";
   }
 }
-
-

@@ -48,7 +48,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCZGv2QlmYFShmJK-xV2EDuWtraJhLNCco',
-    appId: '1:871867126085:ios:6b5ccc40b1c26ad61eae2c',
+    appId: '1:871867126085:ios:79fa4c539849e2e21eae2c',
     messagingSenderId: '871867126085',
     projectId: 'applaba-01',
     storageBucket: 'applaba-01.appspot.com',
@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyBb4yFcLdQxIIm55bgrBV6ohG25II1TT8c',
-    appId: '1:871867126085:web:fff3b5a6525dd2671eae2c',
+    appId: '1:871867126085:web:18b1c165b1cc798c1eae2c',
     messagingSenderId: '871867126085',
     projectId: 'applaba-01',
     authDomain: 'applaba-01.firebaseapp.com',
@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions linux = FirebaseOptions(
     apiKey: 'AIzaSyBb4yFcLdQxIIm55bgrBV6ohG25II1TT8c',
-    appId: '1:871867126085:web:1e049640044744da1eae2c',
+    appId: '1:871867126085:web:498f95852d67b1df1eae2c',
     messagingSenderId: '871867126085',
     projectId: 'applaba-01',
     authDomain: 'applaba-01.firebaseapp.com',

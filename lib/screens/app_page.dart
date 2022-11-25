@@ -1,5 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutterfire_ui/auth.dart';
+import 'package:provider/provider.dart';
 
 /// Main application page with nothing
 ///
@@ -25,6 +29,7 @@ class AppPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
+              FirebaseAuth.instance.signOut();
               Navigator.pushNamed(context, '/home page');
             },
           ),

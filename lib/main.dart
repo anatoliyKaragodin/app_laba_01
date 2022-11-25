@@ -1,17 +1,25 @@
+import 'package:app_laba_01/firebase_options.dart';
 import 'package:app_laba_01/l10n/all_locales.dart';
 import 'package:app_laba_01/screens/app_page.dart';
 import 'package:app_laba_01/screens/home_page.dart';
-import 'package:app_laba_01/screens/login_email_page.dart';
-import 'package:app_laba_01/screens/login_google_page.dart';
 import 'package:app_laba_01/screens/settings_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:app_laba_01/settings/model_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:app_laba_01/locale_provider.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 
-void main() {
+void main() async {
+WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+    FirebaseUIAuth.configureProviders([
+        GoogleProvider(clientId: '871867126085-0bjbb0kuohbg12vpmqf2sdtgp4o0776c.apps.googleusercontent.com'),
+    ]);
   runApp(const MyApp());
 }
 
@@ -57,8 +65,6 @@ class MyApp extends StatelessWidget {
               initialRoute: '/home page',
               routes: {
                 '/home page': (context) => const HomePage(),
-                '/login Email': (context) => const LoginEmailPage(),
-                '/login Google': (context) => const LoginGooglePage(),
                 '/app page': (context) => const AppPage(),
                 '/settings page': (context) => const SettingsPage(),
               },
