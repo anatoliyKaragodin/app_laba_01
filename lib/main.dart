@@ -3,13 +3,19 @@ import 'package:app_laba_01/l10n/all_locales.dart';
 import 'package:app_laba_01/screens/app_page.dart';
 import 'package:app_laba_01/screens/home_page.dart';
 import 'package:app_laba_01/screens/settings_page.dart';
+
+import 'package:flutter/foundation.dart' show SynchronousFuture;
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/i10n.dart';
 
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:app_laba_01/settings/model_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:app_laba_01/locale_provider.dart';
+import 'package:app_laba_01/l10n/ru_locale.dart';
+import 'package:app_laba_01/l10n/kk_locale.dart';
+
 
 
 void main() async {
@@ -21,6 +27,55 @@ void main() async {
 
   runApp(const MyApp());
 }
+
+// class DemoLocalizations {
+//   DemoLocalizations(this.locale);
+//
+//   final Locale locale;
+//
+//   static DemoLocalizations of(BuildContext context) {
+//     return Localizations.of<DemoLocalizations>(context, DemoLocalizations)!;
+//   }
+//
+//   static const _localizedValues = <String, Map<String, String>>{
+//     'ru': {
+//       'title': 'Hello World',
+//     },
+//     'en': {
+//       'title': 'Hola Mundo',
+//     },
+//     'kk': {
+//       'title': 'Hola Mundo',
+//     },
+//   };
+//
+//   static List<String> languages ()=> _localizedValues.keys.toList();
+//
+//   String get title {
+//     return _localizedValues[locale.languageCode]!['title']!;
+//   }
+// }
+// // #enddocregion Demo
+//
+// // #docregion Delegate
+// class DemoLocalizationsDelegate
+//     extends LocalizationsDelegate<DemoLocalizations> {
+//   const DemoLocalizationsDelegate();
+//
+//   @override
+//   bool isSupported(Locale locale) => DemoLocalizations.languages().contains(locale.languageCode);
+//
+//
+//   @override
+//   Future<DemoLocalizations> load(Locale locale) {
+//     // Returning a SynchronousFuture here because an async "load" operation
+//     // isn't needed to produce an instance of DemoLocalizations.
+//     return SynchronousFuture<DemoLocalizations>(DemoLocalizations(locale));
+//   }
+//
+//   @override
+//   bool shouldReload(DemoLocalizationsDelegate old) => false;
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -40,7 +95,15 @@ class MyApp extends StatelessWidget {
               locale:
               // Locale("ru"),
               localeNotifier.locale,
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                // FlutterFireUILocalizations.withDefaultOverrides(const LabelOverrides()),
+                FlutterFireUILocalizations.delegate,
+                FlutterFireUIRuLocalizationsDelegate(),
+                FlutterFireUIKkLocalizationsDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate
+              ],
               debugShowCheckedModeBanner: false,
               theme: themeNotifier.isDark
                   ? ThemeData(
@@ -63,6 +126,7 @@ class MyApp extends StatelessWidget {
               ///
               initialRoute: '/home page',
               routes: {
+
                 '/home page': (context) => const HomePage(),
                 '/app page': (context) => const AppPage(),
                 '/settings page': (context) => const SettingsPage(),
