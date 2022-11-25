@@ -36,7 +36,9 @@ class AppPage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text(AppLocalizations.of(context).appText),
+        child: 
+        Image.asset('images/rofl.jpeg')
+        // Text(AppLocalizations.of(context).appText),
       ),
     );
   }
