@@ -1,25 +1,24 @@
+import 'package:app_laba_01/settings/my_preference.dart';
 import 'package:test/test.dart';
-import 'package:app_laba_01/settings/model_theme.dart';
+
 import 'package:flutter_test/flutter_test.dart' as flutterTest;
 
-void main() {
+void main() async {
   flutterTest.TestWidgetsFlutterBinding.ensureInitialized();
 
   group('modelTheme', ()
   {
-    test('set isDark', () {
-      final modelTheme = ModelTheme();
+    test('set isDark', () async {
 
-      modelTheme.isDark;
+      final myPreferences = MyPreferences();
 
-      expect(modelTheme.isDark, false);
+
+      await myPreferences.setTheme(false);
+      final testField = await myPreferences.getTheme();
+
+
+      expect(testField, false);
     });
 
-    // test('getPreferences', () {
-    //   final modelTheme = ModelTheme();
-    //   modelTheme.isDark;
-    //   modelTheme.isDark(false);
-    //
-    // });
   });
 }

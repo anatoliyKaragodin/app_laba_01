@@ -4,9 +4,6 @@ import 'package:flutterfire_ui/auth.dart';
 
 import 'package:app_laba_01/screens/app_page.dart';
 
-
-
-
 class AuthGate extends StatelessWidget {
   const AuthGate({Key? key}) : super(key: key);
 
@@ -23,7 +20,9 @@ class AuthGate extends StatelessWidget {
               EmailProviderConfiguration(),
               GoogleProviderConfiguration(
                   clientId:
-                      '871867126085-0bjbb0kuohbg12vpmqf2sdtgp4o0776c.apps.googleusercontent.com'),
+                      '871867126085-0bjbb0kuohbg12vpmqf2sdtgp4o0776c.apps.googleusercontent.com'
+              ),
+              AppleProviderConfiguration()
             ],
           );
         }
@@ -31,4 +30,3 @@ class AuthGate extends StatelessWidget {
     );
   }
 }
-
