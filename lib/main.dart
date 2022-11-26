@@ -42,8 +42,12 @@ class MyApp extends StatelessWidget {
           child: Consumer<LocaleProvider>(
               builder: (context, LocaleProvider localeNotifier, child) {
             return MaterialApp(
-              supportedLocales: AllLocale.all,
-              locale: localeNotifier.locale,
+              supportedLocales: [
+                Locale(AllLocale.all[0]),
+                Locale(AllLocale.all[1]),
+                Locale(AllLocale.all[2])
+              ],
+              locale: Locale(localeNotifier.locale),
               localizationsDelegates: [
                 AppLocalizations.delegate,
                 FlutterFireUILocalizations.delegate,
