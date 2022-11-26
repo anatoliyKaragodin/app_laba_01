@@ -3,6 +3,7 @@ import 'package:app_laba_01/l10n/all_locales.dart';
 import 'package:app_laba_01/screens/app_page.dart';
 import 'package:app_laba_01/screens/home_page.dart';
 import 'package:app_laba_01/screens/settings_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/foundation.dart' show SynchronousFuture;
 import 'package:flutter/material.dart';
@@ -16,14 +17,10 @@ import 'package:app_laba_01/locale_provider.dart';
 import 'package:app_laba_01/l10n/ru_locale.dart';
 import 'package:app_laba_01/l10n/kk_locale.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const MyApp());
 }
@@ -93,8 +90,8 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               supportedLocales: AllLocale.all,
               locale:
-              // Locale("ru"),
-              localeNotifier.locale,
+                  // Locale("ru"),
+                  localeNotifier.locale,
               localizationsDelegates: [
                 AppLocalizations.delegate,
                 // FlutterFireUILocalizations.withDefaultOverrides(const LabelOverrides()),
@@ -126,7 +123,6 @@ class MyApp extends StatelessWidget {
               ///
               initialRoute: '/home page',
               routes: {
-
                 '/home page': (context) => const HomePage(),
                 '/app page': (context) => const AppPage(),
                 '/settings page': (context) => const SettingsPage(),

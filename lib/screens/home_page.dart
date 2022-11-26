@@ -23,9 +23,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       /// Authentication option
       ///
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      body: AuthGate(),
+      
+      // Column(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [
           // Padding(
           //   padding: EdgeInsets.only(bottom: 10.0),
           //   child: Text(
@@ -33,8 +35,6 @@ class HomePage extends StatelessWidget {
           //     // style: Theme.of(context).textTheme.headlineSmall,
           //   ),
           // ),
-
-          Placeholder(child: AuthGate(),),
 
           // Row(
           //   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,38 +51,34 @@ class HomePage extends StatelessWidget {
           //         child: Text('Email'))
           //   ],
           // ),
-          const SizedBox(height: 100),
-          const SizedBox(
-            height: 100,
-          ),
 
           /// Language option
           ///
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    Provider.of<LocaleProvider>(context, listen: false)
-                        .setLocale(AllLocale.all[0]);
-                  },
-                  child: const Text('Русский')),
-              TextButton(
-                  onPressed: () {
-                    Provider.of<LocaleProvider>(context, listen: false)
-                        .setLocale(AllLocale.all[1]);
-                  },
-                  child: const Text('English')),
-              TextButton(
-                  onPressed: () {
-                    Provider.of<LocaleProvider>(context, listen: false)
-                        .setLocale(AllLocale.all[2]);
-                  },
-                  child: const Text('қазақ')),
-            ],
-          ),
-        ],
-      ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     TextButton(
+          //         onPressed: () {
+          //           Provider.of<LocaleProvider>(context, listen: false)
+          //               .setLocale(AllLocale.all[0]);
+          //         },
+          //         child: const Text('Русский')),
+          //     TextButton(
+          //         onPressed: () {
+          //           Provider.of<LocaleProvider>(context, listen: false)
+          //               .setLocale(AllLocale.all[1]);
+          //         },
+          //         child: const Text('English')),
+          //     TextButton(
+          //         onPressed: () {
+          //           Provider.of<LocaleProvider>(context, listen: false)
+          //               .setLocale(AllLocale.all[2]);
+          //         },
+          //         child: const Text('қазақ')),
+          //   ],
+          // ),
+      //   ],
+      // ),
     );
   }
 }
