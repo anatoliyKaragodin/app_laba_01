@@ -1,5 +1,5 @@
 import 'package:app_laba_01/l10n/all_locales.dart';
-import 'package:app_laba_01/locale_provider.dart';
+import 'package:app_laba_01/settings/locale_provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:app_laba_01/settings/model_theme.dart';

@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:app_laba_01/settings/model_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:app_laba_01/locale_provider.dart';
+import 'package:app_laba_01/settings/locale_provider.dart';
 import 'package:app_laba_01/l10n/ru_locale.dart';
 import 'package:app_laba_01/l10n/kk_locale.dart';
 
@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
       create: (_) => ModelTheme(),
       child: Consumer<ModelTheme>(
           builder: (context, ModelTheme themeNotifier, child) {
-            /// Change language provider
-            ///
+        /// Change language provider
+        ///
         return ChangeNotifierProvider(
           create: (_) => LocaleProvider(),
           child: Consumer<LocaleProvider>(
