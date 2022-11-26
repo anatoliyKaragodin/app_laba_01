@@ -9,32 +9,40 @@ class AppPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        actions: [
-          /// Settings icon
-          ///
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(context, '/settings page');
-            },
-          ),
+      appBar: buildAppBar(context),
+      body: buildBody(),
+    );
+  }
 
-          /// Logout icon
-          ///
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-              Navigator.pushNamed(context, '/home page');
-            },
-          ),
-        ],
-      ),
-      body: Center(child: Image.asset('images/rofl.jpeg')
-          // Text(AppLocalizations.of(context).appText),
-          ),
+  Center buildBody() {
+    return Center(child: Image.asset('images/rofl.jpeg')
+        // Text(AppLocalizations.of(context).appText),
+        );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      actions: [
+        /// Settings icon
+        ///
+        IconButton(
+          icon: const Icon(Icons.settings),
+          onPressed: () {
+            Navigator.pushNamed(context, '/settings page');
+          },
+        ),
+
+        /// Logout icon
+        ///
+        IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+            Navigator.pushNamed(context, '/home page');
+          },
+        ),
+      ],
     );
   }
 }

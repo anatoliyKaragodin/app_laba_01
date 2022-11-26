@@ -15,47 +15,48 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /// Authentication option
-      ///
-      body: Column(
+          body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/auth_page');
-              },
-              child: Text(AppLocalizations.of(context).authentication)),
-          SizedBox(
-            height: 100,
-          ),
-
-          /// Language option
-          ///
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    Provider.of<LocaleProvider>(context, listen: false)
-                        .setLocale(AllLocale.all[0]);
-                  },
-                  child: const Text('Русский')),
-              TextButton(
-                  onPressed: () {
-                    Provider.of<LocaleProvider>(context, listen: false)
-                        .setLocale(AllLocale.all[1]);
-                  },
-                  child: const Text('English')),
-              TextButton(
-                  onPressed: () {
-                    Provider.of<LocaleProvider>(context, listen: false)
-                        .setLocale(AllLocale.all[2]);
-                  },
-                  child: const Text('қазақ')),
-            ],
-          ),
+          authenticationButton(context),
+          const SizedBox(height: 100),
+          languageOption(context),
         ],
       ),
+    );
+  }
+
+  TextButton authenticationButton(BuildContext context) {
+    return TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/auth_page');
+            },
+            child: Text(AppLocalizations.of(context).authentication));
+  }
+
+  Row languageOption(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+            onPressed: () {
+              Provider.of<LocaleProvider>(context, listen: false)
+                  .setLocale(AllLocale.all[0]);
+            },
+            child: const Text('Русский')),
+        TextButton(
+            onPressed: () {
+              Provider.of<LocaleProvider>(context, listen: false)
+                  .setLocale(AllLocale.all[1]);
+            },
+            child: const Text('English')),
+        TextButton(
+            onPressed: () {
+              Provider.of<LocaleProvider>(context, listen: false)
+                  .setLocale(AllLocale.all[2]);
+            },
+            child: const Text('қазақ')),
+      ],
     );
   }
 }

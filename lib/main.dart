@@ -29,10 +29,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Change theme provider
+    ///
     return ChangeNotifierProvider(
       create: (_) => ModelTheme(),
       child: Consumer<ModelTheme>(
           builder: (context, ModelTheme themeNotifier, child) {
+            /// Change language provider
+            ///
         return ChangeNotifierProvider(
           create: (_) => LocaleProvider(),
           child: Consumer<LocaleProvider>(
