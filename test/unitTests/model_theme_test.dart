@@ -1,10 +1,10 @@
 import 'package:app_laba_01/settings/my_preference.dart';
 import 'package:test/test.dart';
 
-import 'package:flutter_test/flutter_test.dart' as flutterTest;
+import 'package:flutter_test/flutter_test.dart' as flutter_test;
 
 void main() async {
-  flutterTest.TestWidgetsFlutterBinding.ensureInitialized();
+  flutter_test.TestWidgetsFlutterBinding.ensureInitialized();
 
   group('modelTheme', ()
   {
