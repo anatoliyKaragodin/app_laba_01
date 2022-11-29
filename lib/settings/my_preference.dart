@@ -12,7 +12,7 @@ class MyPreferences {
 
   getTheme() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(THEME_KEY) ?? false;
+    return sharedPreferences.getBool(THEME_KEY) ?? true;
   }
 
   setLanguage(String value) async {
