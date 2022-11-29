@@ -118,7 +118,7 @@ class RuLocalizations extends FlutterFireUILocalizationLabels {
 
   @override
   String get wrongOrNoPasswordErrorText =>
-      'Пароль недействителен или у пользователя нет пароля';
+      'Пароль недействителен';
 
   @override
   String get signInText => 'Войти';

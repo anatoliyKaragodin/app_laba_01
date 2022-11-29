@@ -1,7 +1,6 @@
 import 'package:app_laba_01/l10n/all_locales.dart';
 import 'package:app_laba_01/settings/locale_provider.dart';
 
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,7 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: Key("homePage"),
-          body: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           authenticationButton(context),
@@ -28,12 +27,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  TextButton authenticationButton(BuildContext context) {
-    return TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/auth_page');
-            },
-            child: Text(AppLocalizations.of(context).authentication));
+  OutlinedButton authenticationButton(BuildContext context) {
+    return OutlinedButton(
+        style: OutlinedButton.styleFrom(
+            side: BorderSide(width: 0.05, color: Colors.grey)),
+        onPressed: () {
+          Navigator.pushNamed(context, '/auth_page');
+        },
+        child: Text(AppLocalizations.of(context).authentication));
   }
 
   Row languageOption(BuildContext context) {

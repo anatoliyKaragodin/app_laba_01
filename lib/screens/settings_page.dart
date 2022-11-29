@@ -21,14 +21,39 @@ class SettingsPage extends StatelessWidget {
       return Consumer<LocaleProvider>(
           builder: (context, LocaleProvider localeNotifier, child) {
         return Scaffold(
-            appBar: buildAppBar(context),
+            // appBar: buildAppBar(context),
             body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/app page');
+                  },
+                ),
+              ],
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                themeOption(context, themeNotifier),
-                languageOption(context),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    themeOption(context, themeNotifier),
+                    languageOption(context),
+                  ],
+                ),
               ],
-            ));
+            ),
+            Row(
+              children: [],
+            )
+          ],
+        ));
       });
     });
   }
@@ -38,6 +63,7 @@ class SettingsPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextButton(
+            // style: ,
             onPressed: () {
               Provider.of<LocaleProvider>(context, listen: false)
                   .setLocale(AllLocale.all[0]);
@@ -59,24 +85,30 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Row themeOption(BuildContext context, ModelTheme themeNotifier) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          AppLocalizations.of(context).appTheme,
-        ),
-        IconButton(
-          onPressed: () {
-            themeNotifier.isDark
-                ? themeNotifier.isDark = false
-                : themeNotifier.isDark = true;
-          },
-          icon: Icon(themeNotifier.isDark
-              ? Icons.dark_mode_outlined
-              : Icons.light_mode_outlined),
-        ),
-      ],
+  Padding themeOption(BuildContext context, ModelTheme themeNotifier) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            AppLocalizations.of(context).appTheme,
+          ),
+          IconButton(
+            onPressed: () {
+              themeNotifier.isDark
+                  ? themeNotifier.isDark = false
+                  : themeNotifier.isDark = true;
+            },
+            icon: Icon(themeNotifier.isDark
+                ? Icons.dark_mode_outlined
+                : Icons.light_mode_outlined),
+            color: themeNotifier.isDark
+                ? Colors.lightBlue.shade700
+                : Colors.orangeAccent.shade400,
+          ),
+        ],
+      ),
     );
   }
 
