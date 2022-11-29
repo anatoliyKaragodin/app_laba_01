@@ -59,11 +59,40 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: themeNotifier.isDark
                   ? ThemeData(
+                iconTheme: IconThemeData(color: Colors.orangeAccent.shade400),
+                colorScheme: ColorScheme(brightness: Brightness.dark,
+                    primary: Colors.orangeAccent.shade400,
+                    onPrimary: Colors.orangeAccent,
+                    secondary: Colors.orangeAccent,
+                    onSecondary: Colors.orangeAccent,
+                    error: Colors.orangeAccent,
+                    onError: Colors.orangeAccent,
+                    background: Colors.orangeAccent,
+                    onBackground: Colors.orangeAccent,
+                    surface: Colors.orangeAccent,
+                    onSurface: Colors.orangeAccent),
+
                       textTheme:
                           TextTheme(bodyText2: TextStyle(fontSize: 18.0)),
                       brightness: Brightness.dark,
                     )
                   : ThemeData(
+                iconTheme: IconThemeData(color: Colors.lightBlue.shade700),
+                // scaffoldBackgroundColor: Colors.white54,
+                // backgroundColor: Colors.white10,
+                colorScheme: ColorScheme(
+
+                    brightness: Brightness.light,
+                    primary: Colors.lightBlue.shade700,
+                    onPrimary: Colors.orangeAccent,
+                    secondary: Colors.orangeAccent,
+                    onSecondary: Colors.orangeAccent,
+                    error: Colors.orangeAccent,
+                    onError: Colors.orangeAccent,
+                    background: Colors.orangeAccent,
+                    onBackground: Colors.orangeAccent,
+                    surface: Colors.orangeAccent,
+                    onSurface: Colors.orangeAccent),
                       textTheme:
                           TextTheme(bodyText2: TextStyle(fontSize: 18.0)),
                       brightness: Brightness.light,
